@@ -3,7 +3,7 @@
   
   var navigator = globals.navigator;
   
-  var aths = {
+  var o = {
     supported: null,                 // True if the platform is supported
     installed: null,                 // True if the app is already installed
     message:   null,                 // The platform specific install instructions
@@ -12,7 +12,7 @@
     lang:      'en'                  // The content language
   };
   
-  aths.messages = {
+  o.messages = {
     en: {
       ios:           '<strong>Tap on the share icon</strong>, then tap on <q>Add to Home Screen</q>.',
       android:       '<strong>Tap on &#8942;</strong> and then tap on <q>Add to Home screen</q>.',
@@ -27,7 +27,7 @@
     }
   };
   
-  aths.positions = {
+  o.positions = {
     ios:     ['bottom', 'center'],
     android: ['top', 'right']
   };
@@ -35,24 +35,24 @@
   /**
    * Get translated strings
    */
-  aths._ = function(key){
+  o._ = function(key){
     return this.messages[this.lang][key];
   };
   
   /**
    * Set the content language
    */
-  aths.setLanguage = function(lang){
+  o.setLanguage = function(lang){
     if(lang in this.messages){
       this.lang = lang;
     }
-    return this;
+    return this; 
   };
   
   /**
    * Determine if platform is supported (OS + Browser)
    */
-  aths.isSupported = function(){
+  o.isSupported = function(){
     if(this.supported !== null){
       return this.supported;
     }
@@ -87,7 +87,7 @@
   /**
    * Determine if the app is already added to hoeme screen
    */
-  aths.isInstalled = function(){
+  o.isInstalled = function(){
     if(this.installed !== null){
       return this.installed;
     }
@@ -105,7 +105,7 @@
   /**
    * Get the appropriate install instructions depending on the platform
    */
-  aths.getMessage = function(){
+  o.getMessage = function(){
     if(this.message !== null){
       return this.message;
     }
@@ -121,7 +121,7 @@
   /**
    * Get the position where the message muste be displayed (near the buttons)
    */
-  aths.getPosition = function(){
+  o.getPosition = function(){
     if(this.position !== null){
       return this.position;
     }
@@ -135,7 +135,7 @@
    * - ios : iOS + Safari
    * - android : Android + Chrome
    */
-  aths.getPlatform = function(){
+  o.getPlatform = function(){
     if(this.platform !== null){
       return this.platform;
     }
@@ -143,11 +143,7 @@
     this.isSupported();
     return this.platform;
   };
-  
-  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
-    module.exports = aths;
-  }
-  else {
-    globals.W6_ATHS = aths;
-  }
+
+  globals.W6_ATHS = o; 
+
 })(window);
