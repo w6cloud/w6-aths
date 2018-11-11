@@ -61,6 +61,13 @@ getPlatform()
 ```
 Get the matching platform
 
+## TODO
+
+- Differenciate browser, os and platform (browser + os)
+- Heavy refactoring (set all values on init and access them as properties)
+- Use automatic install for Android (https://github.com/filrak/add-to-homescreen-control) check if it exists on other platforms
+- Manage windows phones, chrome os, firefox os...
+
 ## Credits
 
 Some parts of this code is copied from :
