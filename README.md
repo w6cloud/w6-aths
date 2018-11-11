@@ -7,30 +7,58 @@ The plugin cheks if the device / browser pair is one of the following :
 
 And returns appropriate "Add to home screen" instructions.
 
+## Usage
+
+This plugin doesn't display any message. You'll have to display the information yourself.  
+This lets you choose the way you want to inform the user (using an overlay, in an help section, in a toast...).
+
+```html
+<script src="w6-aths.js"></script>
+<script>
+W6_ATHS.setLanguage('fr');
+if(
+    !W6_ATHS.isInstalled()
+    && W6_ATHS.isSupported()
+){
+    alert(W6_ATHS.getMessage());
+}
+</script>
+```
+
 ## Methods
 
-init(lang)
-
+```js
+setLanguage(lang)
+```
 Sets the langage
 
-isSupported()
 
+```js
+isSupported()
+```
 Returns true if the platform is in the supported platforms list
 
-isInstalled()
 
+```js
+isInstalled()
+```
 Returns true if the app is already in standalone mode
 
-getMessage()
 
+```js
+getMessage()
+```
 Get the correct instructions
 
-getPosition()
 
+```js
+getPosition()
+```
 Get the position of the message depending on the platform
 
+```js
 getPlatform()
-
+```
 Get the matching platform
 
 ## Credits
