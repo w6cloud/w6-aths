@@ -9,14 +9,14 @@
     lang: 'en',
     messages: {
       en: {
-        ios: '<strong>Tap on the share icon</strong>, then tap on <q>Add to Home Screen</q>.',
-        android: '<strong>Tap on &#8942;</strong> and then tap on <q>Add to Home screen</q>.',
+        ios: 'To install the application, please tap on the share icon (bottom center of your browser), then tap on "Add to Home Screen".',
+        android: 'To install the application, please tap on the menu icon (top right of your browser) and then tap on "Add to Home screen".',
         installed: 'Already installed',
         not_supported: 'Add to home screen instructions are not available for your device.'
       },
       fr: {
-        ios: '<strong>Appuyez sur l\'icône partage</strong>, puis appuyez sur <q>Sur l\'écran d\'accueil</q>.',
-        android: '<strong>Appuyez sur &#8942;</strong>, puis appuyez sur <q>Ajouter à l\'écran d\'accueil</q>.',
+        ios: 'Pour installer l\'application\nappuyez sur l\'icône partage\n(en bas au centre du navigateur),\npuis appuyez sur le lien nommé\n"Sur l\'écran d\'accueil".',
+        android: 'Pour installer l\'application\nappuyez sur l\'icône menu\n(en haut à droite du navigateur) puis\nappuyez sur "Ajouter à l\'écran d\'accueil".',
         installed: 'Application déjà installée',
         not_supported: 'Les instructions pour l\'ajout à l\'écran d\'accueil ne sont pas disponibles pour votre plateforme.'
       }
@@ -29,22 +29,22 @@
 
       // Test mobile
       if (typeof window.orientation === "undefined") {
-        return;
+        return this;
       }
 
       // Test Android
       if (
-        /android/i.test(userAgent)
-        && /chrome\/[\d\.]+/i.test(userAgent)
+        /android/i.test(userAgent) &&
+        /chrome\/[\d\.]+/i.test(userAgent)
       ) {
         this.platform = 'android';
         this.position = ['top', 'right'];
       }
       // Test iOS
       else if (
-        ['iPhone', 'iPad', 'iPod'].indexOf(navigator.platform) !== -1
-        && /applewebkit\/[\d\.]+/i.test(navigator.userAgent)
-        && !globals.MSStream
+        ['iPhone', 'iPad', 'iPod'].indexOf(navigator.platform) !== -1 &&
+        /applewebkit\/[\d\.]+/i.test(navigator.userAgent) &&
+        !globals.MSStream
       ) {
         this.platform = 'ios';
         this.position = ['bottom', 'center'];
